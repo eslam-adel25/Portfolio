@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Users, Award, Briefcase, Zap } from 'lucide-react';
+import aboutImg from "../img/Eslam_Adel.jpg";
 
 const AboutSection = () => {
   const sectionRef = useRef(null);
@@ -96,11 +97,11 @@ const AboutSection = () => {
             <div className="relative">
               {/* Background Shape */}
               <div className="absolute -inset-4 bg-gradient-to-br from-[#00d4ff20] to-[#7b2cbf20] rounded-3xl transform rotate-3" />
-              
+
               {/* Main Image */}
               <div className="relative rounded-2xl overflow-hidden">
                 <img
-                  src="/src/img/Eslam_Adel.jpg"
+                  src={aboutImg}
                   alt="Eslam Adel"
                   className="w-full h-auto object-cover"
                 />
@@ -112,10 +113,14 @@ const AboutSection = () => {
                 className="absolute -bottom-6 -right-6 glass p-6 rounded-2xl"
                 initial={{ scale: 0 }}
                 animate={isInView ? { scale: 1 } : {}}
-                transition={{ duration: 0.5, delay: 0.6, type: 'spring' }}
+                transition={{ duration: 0.5, delay: 0.6, type: "spring" }}
               >
                 <div className="text-4xl font-bold gradient-text">3+</div>
-                <div className="text-sm text-[#a0a0b0]">Years of<br />Experience</div>
+                <div className="text-sm text-[#a0a0b0]">
+                  Years of
+                  <br />
+                  Experience
+                </div>
               </motion.div>
             </div>
           </motion.div>
@@ -124,22 +129,34 @@ const AboutSection = () => {
           <motion.div
             variants={containerVariants}
             initial="hidden"
-            animate={isInView ? 'visible' : 'hidden'}
+            animate={isInView ? "visible" : "hidden"}
           >
-            <motion.h3 variants={itemVariants} className="text-2xl font-bold mb-4">
-              Frontend Developer 
+            <motion.h3
+              variants={itemVariants}
+              className="text-2xl font-bold mb-4"
+            >
+              Frontend Developer
             </motion.h3>
 
-            <motion.p variants={itemVariants} className="text-[#a0a0b0] mb-6 leading-relaxed">
-              I'm a passionate Front-End Developer with expertise in creating modern, responsive, 
-              and user-friendly websites . I specialize in transforming ideas into stunning 
-              digital experiences using cutting-edge technologies like React, TypeScript, and Tailwind CSS.
+            <motion.p
+              variants={itemVariants}
+              className="text-[#a0a0b0] mb-6 leading-relaxed"
+            >
+              I'm a passionate Front-End Developer with expertise in creating
+              modern, responsive, and user-friendly websites . I specialize in
+              transforming ideas into stunning digital experiences using
+              cutting-edge technologies like React, TypeScript, and Tailwind
+              CSS.
             </motion.p>
 
-            <motion.p variants={itemVariants} className="text-[#a0a0b0] mb-8 leading-relaxed">
-              My goal is to deliver exceptional user experiences through clean code, intuitive design, 
-              and attention to detail. I believe in continuous learning and staying updated with the 
-              latest web development trends to provide the best solutions for my clients.
+            <motion.p
+              variants={itemVariants}
+              className="text-[#a0a0b0] mb-8 leading-relaxed"
+            >
+              My goal is to deliver exceptional user experiences through clean
+              code, intuitive design, and attention to detail. I believe in
+              continuous learning and staying updated with the latest web
+              development trends to provide the best solutions for my clients.
             </motion.p>
 
             {/* Skills */}
@@ -149,8 +166,12 @@ const AboutSection = () => {
                 {skills.map((skill, index) => (
                   <div key={index}>
                     <div className="flex justify-between mb-1">
-                      <span className="text-sm text-[#a0a0b0]">{skill.name}</span>
-                      <span className="text-sm text-[#00d4ff]">{skill.level}%</span>
+                      <span className="text-sm text-[#a0a0b0]">
+                        {skill.name}
+                      </span>
+                      <span className="text-sm text-[#00d4ff]">
+                        {skill.level}%
+                      </span>
                     </div>
                     <div className="h-2 bg-[#1a1a25] rounded-full overflow-hidden">
                       <motion.div
@@ -181,7 +202,7 @@ const AboutSection = () => {
         <motion.div
           variants={containerVariants}
           initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
+          animate={isInView ? "visible" : "hidden"}
           className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20"
         >
           {stats.map((stat, index) => (
