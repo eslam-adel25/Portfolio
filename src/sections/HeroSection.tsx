@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Facebook, Twitter, Instagram, Linkedin, Download, ArrowRight } from 'lucide-react';
+import myImage from "../img/es2.jpg";
 
 const HeroSection = () => {
   const [displayText, setDisplayText] = useState('');
@@ -71,7 +72,10 @@ const HeroSection = () => {
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center relative overflow-hidden">
+    <section
+      id="home"
+      className="min-h-screen flex items-center relative overflow-hidden"
+    >
       {/* Background Orbs */}
       <div className="orb orb-1" />
       <div className="orb orb-2" />
@@ -111,8 +115,9 @@ const HeroSection = () => {
               variants={itemVariants}
               className="text-[#a0a0b0] text-lg max-w-lg mb-8 leading-relaxed"
             >
-              A passionate Front-End Developer dedicated to creating modern, responsive, 
-              and user-friendly websites  that deliver exceptional digital experiences.
+              A passionate Front-End Developer dedicated to creating modern,
+              responsive, and user-friendly websites that deliver exceptional
+              digital experiences.
             </motion.p>
 
             {/* Social Links */}
@@ -134,12 +139,17 @@ const HeroSection = () => {
             </motion.div>
 
             {/* CTA Buttons */}
-            <motion.div variants={itemVariants} className="flex flex-wrap gap-4">
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-wrap gap-4"
+            >
               <motion.a
                 href="#contact"
                 onClick={(e) => {
                   e.preventDefault();
-                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                  document
+                    .getElementById("contact")
+                    ?.scrollIntoView({ behavior: "smooth" });
                 }}
                 className="btn-luxury flex items-center gap-2"
                 whileHover={{ scale: 1.05 }}
@@ -164,42 +174,60 @@ const HeroSection = () => {
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.3, ease: 'easeOut' }}
+            transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
             className="order-1 lg:order-2 flex justify-center"
           >
             <div className="relative">
               {/* Glow Effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-[#00d4ff] to-[#7b2cbf] rounded-full blur-[80px] opacity-30 animate-pulse" />
-              
+
               {/* Image Container */}
               <motion.div
                 className="relative w-72 h-72 md:w-96 md:h-96"
                 animate={{ y: [0, -20, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
               >
                 <div className="image-frame w-full h-full">
                   <img
-                    src="/src/img/es2.jpg"
+                    src={myImage}
                     alt="Eslam Adel"
                     className="w-full h-full object-cover"
                   />
                 </div>
-                
+
                 {/* Floating Badges */}
                 <motion.div
                   className="absolute -top-4 -right-4 glass px-4 py-2 rounded-full"
                   animate={{ y: [0, -10, 0] }}
-                  transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 0.5,
+                  }}
                 >
-                  <span className="text-[#00d4ff] font-semibold text-sm">3+ Years</span>
+                  <span className="text-[#00d4ff] font-semibold text-sm">
+                    3+ Years
+                  </span>
                 </motion.div>
-                
+
                 <motion.div
                   className="absolute -bottom-4 -left-4 glass px-4 py-2 rounded-full"
                   animate={{ y: [0, 10, 0] }}
-                  transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 1,
+                  }}
                 >
-                  <span className="text-[#ffd700] font-semibold text-sm">40+ Projects</span>
+                  <span className="text-[#ffd700] font-semibold text-sm">
+                    40+ Projects
+                  </span>
                 </motion.div>
               </motion.div>
             </div>
