@@ -1,6 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Users, Award, Briefcase, Zap } from 'lucide-react';
+import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaGitAlt } from "react-icons/fa";
+import {
+  SiTypescript,
+  SiTailwindcss,
+  SiDotnet,
+  SiPython,
+  SiCplusplus,
+  SiMysql,
+} from "react-icons/si";
+
 import aboutImg from "../img/Eslam_Adel.jpg";
 
 const AboutSection = () => {
@@ -15,14 +25,27 @@ const AboutSection = () => {
     { icon: Zap, value: 10, label: 'Awards Won', key: 'awards' },
   ];
 
-  const skills = [
-    { name: 'HTML/CSS', level: 95 },
-    { name: 'JavaScript', level: 90 },
-    { name: 'React.js', level: 88 },
-    { name: 'TypeScript', level: 85 },
-    { name: 'Tailwind CSS', level: 92 },
-    
-  ];
+const skills = {
+  Advanced: [
+    { name: "HTML", icon: <FaHtml5 className="text-orange-500" /> },
+    { name: "CSS", icon: <FaCss3Alt className="text-blue-500" /> },
+    { name: "JavaScript", icon: <FaJs className="text-yellow-400" /> },
+  ],
+  Experienced: [{ name: "React", icon: <FaReact className="text-cyan-400" /> }],
+  Strong: [
+    { name: "Tailwind", icon: <SiTailwindcss className="text-teal-400" /> },
+    { name: "Git", icon: <FaGitAlt className="text-orange-600" /> },
+  ],
+  Intermediate: [
+    { name: "TypeScript", icon: <SiTypescript className="text-blue-600" /> },
+  ],
+  Familiar: [
+    { name: "Python", icon: <SiPython className="text-yellow-300" /> },
+    { name: "C++", icon: <SiCplusplus className="text-gray-400" /> },
+    { name: ".NET", icon: <SiDotnet className="text-purple-500" /> },
+    { name: "SQL", icon: <SiMysql className="text-blue-400" /> },
+  ],
+};
 
   useEffect(() => {
     if (isInView) {
@@ -162,6 +185,28 @@ const AboutSection = () => {
             {/* Skills */}
             <motion.div variants={itemVariants} className="mb-8">
               <h4 className="text-lg font-semibold mb-4">Technical Skills</h4>
+
+              {Object.entries(skills).map(([level, items]) => (
+                <div key={level} className="mb-4">
+                  <h5 className="text-sm text-[#00d4ff] mb-2">{level}</h5>
+
+                  <div className="flex flex-wrap gap-2">
+                    {items.map((skill, i) => (
+                      <span
+                        key={i}
+                        className="flex items-center gap-2 px-3 py-1 text-sm rounded-full bg-[#1a1a25] border border-[#2a2a35] hover:border-[#00d4ff] hover:scale-105 hover:shadow-[0_0_10px_#00d4ff55] transition"
+                      >
+                        {skill.icon}
+                        {skill.name}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </motion.div>
+            {/*
+            <motion.div variants={itemVariants} className="mb-8">
+              <h4 className="text-lg font-semibold mb-4">Technical Skills</h4>
               <div className="space-y-4">
                 {skills.map((skill, index) => (
                   <div key={index}>
@@ -170,7 +215,7 @@ const AboutSection = () => {
                         {skill.name}
                       </span>
                       <span className="text-sm text-[#00d4ff]">
-                        {skill.level}%
+                        {skill.level}
                       </span>
                     </div>
                     <div className="h-2 bg-[#1a1a25] rounded-full overflow-hidden">
@@ -184,7 +229,7 @@ const AboutSection = () => {
                   </div>
                 ))}
               </div>
-            </motion.div>
+            </motion.div>*/}
 
             {/* CTA Button */}
             <motion.button
