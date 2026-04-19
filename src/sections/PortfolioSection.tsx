@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { ExternalLink, Github, Eye, X } from "lucide-react";
-import jsGuideImg from "../img/js-guide.png";
+
 
 interface Project {
   id: number;
@@ -41,7 +41,7 @@ const PortfolioSection = () => {
       category: "Web Design",
       description:
         "Interactive JavaScript learning platform with real-world examples, mini games, and modern UI.",
-      image: jsGuideImg,
+      image: "/images/js-guide.png",
       technologies: ["HTML/CSS", "JavaScript"],
       liveUrl: "https://eslam-adel25.github.io/js-guide/",
       githubUrl: "https://github.com/eslam-adel25/js-guide",
