@@ -45,10 +45,22 @@ const HeroSection = () => {
   }, [displayText, isDeleting, loopNum, professions]);
 
   const socialLinks = [
-    { icon: Facebook, href: 'https://www.instagram.com/eslam_adel0127?igsh=MWZ5bGgzdGdvbDY2Nw==', label: 'Facebook' },
-    { icon: Twitter, href: 'https://x.com/AdelEslam87922', label: 'Twitter' },
-    { icon: Instagram, href: 'https://www.facebook.com/share/1LSKF77jxP/', label: 'Instagram' },
-    { icon: Linkedin, href: 'https://www.linkedin.com/in/eslam-adel-jadalrab-808862361?utm_source=share_via&utm_content=profile&utm_medium=member_android', label: 'LinkedIn' },
+    {
+      icon: Facebook,
+      href: "https://www.facebook.com/share/1LSKF77jxP/",
+      label: "Facebook",
+    },
+    { icon: Twitter, href: "https://x.com/AdelEslam87922", label: "Twitter" },
+    {
+      icon: Instagram,
+      href: "https://www.instagram.com/eslam_adel0127?igsh=MWZ5bGgzdGdvbDY2Nw==",
+      label: "Instagram",
+    },
+    {
+      icon: Linkedin,
+      href: "https://www.linkedin.com/in/eslam-adel-jadalrab-808862361?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+      label: "LinkedIn",
+    },
   ];
 
   const containerVariants = {
