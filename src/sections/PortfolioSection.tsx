@@ -23,18 +23,17 @@ const PortfolioSection = () => {
   const filters = ["All", "Web Design", "Development", "UI/UX"];
 
   const projects: Project[] = [
-    /*{
+    {
       id: 1,
-      title: "E-Commerce Platform",
+      title: "StudyMart",
       category: "Development",
       description:
-        "A modern e-commerce platform built with React and Node.js, featuring secure payments and real-time inventory management.",
-      image:
-        "https://images.unsplash.com/photo-1557821552-17105176677c?w=800&h=600&fit=crop",
-      technologies: ["React", "Node.js", "MongoDB", "Stripe"],
-      liveUrl: "#",
-      githubUrl: "#",
-    },*/
+        "StudyMart is a responsive e-learning web platform designed to provide a seamless experience for browsing and discovering online courses, featuring modern UI design and smooth user interaction.",
+      image: "/images/StudyMart.png",
+      technologies: ["HTML/CSS", "JavaScript"],
+      liveUrl: "https://eslam-adel25.github.io/StudyMart/",
+      githubUrl: "https://github.com/eslam-adel25/StudyMart.git/",
+    },
     {
       id: 2,
       title: "JS Guide",
