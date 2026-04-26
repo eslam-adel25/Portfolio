@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
-import { motion, useInView } from 'framer-motion';
-import { Users, Award, Briefcase, Zap } from 'lucide-react';
+import { useEffect, useRef, useState } from "react";
+import { motion, useInView } from "framer-motion";
+import { Users, Award, Briefcase, Zap } from "lucide-react";
 import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaGitAlt } from "react-icons/fa";
 import {
   SiTypescript,
@@ -15,37 +15,49 @@ import aboutImg from "../img/Eslam_Adel.jpg";
 
 const AboutSection = () => {
   const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, margin: '-100px' });
-  const [counters, setCounters] = useState({ projects: 0, clients: 0, experience: 0, awards: 0 });
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+  const [counters, setCounters] = useState({
+    projects: 0,
+    clients: 0,
+    experience: 0,
+    awards: 0,
+  });
 
   const stats = [
-    { icon: Briefcase, value: 40, label: 'Projects Completed', key: 'projects' },
-    { icon: Users, value: 20, label: 'Happy Clients', key: 'clients' },
-    { icon: Award, value: 3, label: 'Years Experience', key: 'experience' },
-    { icon: Zap, value: 10, label: 'Awards Won', key: 'awards' },
+    {
+      icon: Briefcase,
+      value: 10,
+      label: "Projects Completed",
+      key: "projects",
+    },
+    { icon: Users, value: 10, label: "Happy Clients", key: "clients" },
+    { icon: Award, value: 3, label: "Years Experience", key: "experience" },
+    { icon: Zap, value: 5, label: "Awards Won", key: "awards" },
   ];
 
-const skills = {
-  Advanced: [
-    { name: "HTML", icon: <FaHtml5 className="text-orange-500" /> },
-    { name: "CSS", icon: <FaCss3Alt className="text-blue-500" /> },
-    { name: "JavaScript", icon: <FaJs className="text-yellow-400" /> },
-  ],
-  Experienced: [{ name: "React", icon: <FaReact className="text-cyan-400" /> }],
-  Strong: [
-    { name: "Tailwind", icon: <SiTailwindcss className="text-teal-400" /> },
-    { name: "Git", icon: <FaGitAlt className="text-orange-600" /> },
-  ],
-  Intermediate: [
-    { name: "TypeScript", icon: <SiTypescript className="text-blue-600" /> },
-  ],
-  Familiar: [
-    { name: "Python", icon: <SiPython className="text-yellow-300" /> },
-    { name: "C++", icon: <SiCplusplus className="text-gray-400" /> },
-    { name: ".NET", icon: <SiDotnet className="text-purple-500" /> },
-    { name: "SQL", icon: <SiMysql className="text-blue-400" /> },
-  ],
-};
+  const skills = {
+    Advanced: [
+      { name: "HTML", icon: <FaHtml5 className="text-orange-500" /> },
+      { name: "CSS", icon: <FaCss3Alt className="text-blue-500" /> },
+      { name: "JavaScript", icon: <FaJs className="text-yellow-400" /> },
+    ],
+    Experienced: [
+      { name: "React", icon: <FaReact className="text-cyan-400" /> },
+    ],
+    Strong: [
+      { name: "Tailwind", icon: <SiTailwindcss className="text-teal-400" /> },
+      { name: "Git", icon: <FaGitAlt className="text-orange-600" /> },
+    ],
+    Intermediate: [
+      { name: "TypeScript", icon: <SiTypescript className="text-blue-600" /> },
+    ],
+    Familiar: [
+      { name: "Python", icon: <SiPython className="text-yellow-300" /> },
+      { name: "C++", icon: <SiCplusplus className="text-gray-400" /> },
+      { name: ".NET", icon: <SiDotnet className="text-purple-500" /> },
+      { name: "SQL", icon: <SiMysql className="text-blue-400" /> },
+    ],
+  };
 
   useEffect(() => {
     if (isInView) {
@@ -60,10 +72,10 @@ const skills = {
         const easeOut = 1 - Math.pow(1 - progress, 3);
 
         setCounters({
-          projects: Math.floor(40 * easeOut),
-          clients: Math.floor(20 * easeOut),
+          projects: Math.floor(10 * easeOut),
+          clients: Math.floor(10 * easeOut),
           experience: Math.floor(3 * easeOut),
-          awards: Math.floor(10 * easeOut),
+          awards: Math.floor(5 * easeOut),
         });
 
         if (step >= steps) clearInterval(timer);
@@ -86,7 +98,7 @@ const skills = {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: 'easeOut' as const },
+      transition: { duration: 0.6, ease: "easeOut" as const },
     },
   };
 

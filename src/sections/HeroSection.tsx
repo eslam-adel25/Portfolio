@@ -238,7 +238,7 @@ const HeroSection = () => {
                   }}
                 >
                   <span className="text-[#ffd700] font-semibold text-sm">
-                    40+ Projects
+                    10+ Projects
                   </span>
                 </motion.div>
               </motion.div>
