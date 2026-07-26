@@ -11,7 +11,7 @@ import {
   SiMysql,
 } from "react-icons/si";
 
-import aboutImg from "../img/Eslam_Adel.jpg";
+import aboutImg from "../img/Eslam_Adel.png";
 
 const AboutSection = () => {
   const sectionRef = useRef(null);

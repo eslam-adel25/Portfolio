@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Facebook, Twitter, Instagram, Linkedin, Download, ArrowRight } from 'lucide-react';
-import myImage from "../img/es2.jpg";
+import myImage from "../img/img1.png";
 
 const HeroSection = () => {
   const [displayText, setDisplayText] = useState('');
