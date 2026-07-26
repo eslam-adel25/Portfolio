@@ -215,6 +215,9 @@ const HeroSection = () => {
                   <img
                     src={myImage}
                     alt="Eslam Adel"
+                    loading="eager"
+                    fetchPriority="high"
+                    decoding="async"
                     className="w-full h-full object-cover"
                   />
                 </div>

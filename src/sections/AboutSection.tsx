@@ -138,6 +138,9 @@ const AboutSection = () => {
                 <img
                   src={aboutImg}
                   alt="Eslam Adel"
+                  loading="eager"
+                  fetchPriority="high"
+                  decoding="async"
                   className="w-full h-auto object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0f] via-transparent to-transparent" />
