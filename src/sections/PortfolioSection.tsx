@@ -37,7 +37,7 @@ const PortfolioSection = () => {
     {
       id: 2,
       title: "JS Guide",
-      category: "Web Design",
+      category: "Development",
       description:
         "Interactive JavaScript learning platform with real-world examples, mini games, and modern UI.",
       image: "/images/js-guide.png",
@@ -45,17 +45,18 @@ const PortfolioSection = () => {
       liveUrl: "https://eslam-adel25.github.io/js-guide/",
       githubUrl: "https://github.com/eslam-adel25/js-guide",
     },
-    /*{
-      id: 3,
-      title: 'Mobile Banking App',
-      category: 'UI/UX',
-      description: 'A sleek mobile banking application design with intuitive user experience and modern interface.',
-      image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&h=600&fit=crop',
-      technologies: ['Figma', 'Prototyping', 'User Research'],
-      liveUrl: '#',
-      githubUrl: '#',
-    },
     {
+      id: 3,
+      title: "Tahlia",
+      category: "Development",
+      description:
+        "A premium Arabic coffee recipes platform featuring elegant UI, responsive design, smooth interactions, and an immersive café-inspired user experience.",
+      image: "/images/tahlia.png",
+      technologies: ["React", "JavaScript", "Tailwind CSS"],
+      liveUrl: "https://tahlia-lemon.vercel.app/",
+      githubUrl: "https://github.com/eslam-adel25/Tahlia",
+    },
+    /*{
       id: 4,
       title: "Social Media Platform",
       category: "Development",

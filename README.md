@@ -1,5 +1,6 @@
-![License](https://img.shields.io/badge/License-All%20Rights%20Reserved-red?style=for-the-badge)
+
 <div align="center">
+![License](https://img.shields.io/badge/License-All%20Rights%20Reserved-red?style=for-the-badge)
 
 # 🚀 Eslam Adel | Frontend Developer
 
@@ -414,73 +415,6 @@ The project follows a scalable and modular architecture to ensure maintainabilit
 
 ---
 
-# ⚙ Getting Started
-
-Follow these instructions to run the project locally.
-
-## 1️⃣ Clone the Repository
-
-```bash
-git clone https://github.com/eslam-adel25/<repository-name>.git
-```
-
----
-
-## 2️⃣ Navigate into the Project
-
-```bash
-cd <repository-name>
-```
-
----
-
-## 3️⃣ Install Dependencies
-
-```bash
-npm install
-```
-
----
-
-## 4️⃣ Start Development Server
-
-```bash
-npm run dev
-```
-
-The application will be available at:
-
-```text
-http://localhost:5173
-```
-
----
-
-# 📜 Available Scripts
-
-| Command | Description |
-|---------|-------------|
-| npm run dev | Starts the development server |
-| npm run build | Builds the application for production |
-| npm run preview | Preview the production build locally |
-| npm run lint | Run ESLint checks |
-
----
-
-# 🚀 Production Build
-
-Generate an optimized production build:
-
-```bash
-npm run build
-```
-
-Preview the production build locally:
-
-```bash
-npm run preview
-```
-
 ---
 
 # 🌍 Deployment
@@ -690,6 +624,6 @@ It helps support my work and motivates me to continue building high-quality open
 
 Made with ❤️ by **Eslam Adel**
 
-© 2026 All Rights Reserved.
+© 2023 All Rights Reserved.
 
 </div>
