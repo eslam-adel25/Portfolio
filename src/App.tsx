@@ -4,7 +4,7 @@ import ParticlesBackground from './components/ParticlesBackground';
 import Navigation from './components/Navigation';
 import HeroSection from './sections/HeroSection';
 import AboutSection from './sections/AboutSection';
-import ServicesSection from './sections/ServicesSection';
+import ServicesSection from './sections/ExpertiseSection';
 import PortfolioSection from './sections/PortfolioSection';
 import ContactSection from './sections/ContactSection';
 import Footer from './components/Footer';
