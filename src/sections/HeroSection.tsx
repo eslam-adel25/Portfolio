@@ -1,21 +1,29 @@
-import { useEffect, useState, useRef } from 'react';
-import { motion } from 'framer-motion';
-import { Facebook, Twitter, Instagram, Linkedin, Download, ArrowRight } from 'lucide-react';
+import { useEffect, useState, useRef } from "react";
+import { motion } from "framer-motion";
+import {
+  Facebook,
+  Twitter,
+  Instagram,
+  Linkedin,
+  Download,
+  ArrowRight,
+} from "lucide-react";
 import myImage from "../img/img1.png";
 
+const PROFESSIONS = ["Frontend Developer", "React Specialist", "Web Creator"];
+
 const HeroSection = () => {
-  const [displayText, setDisplayText] = useState('');
+  const [displayText, setDisplayText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
   const [loopNum, setLoopNum] = useState(0);
-  const professions = ['Frontend Developer', 'React Specialist', 'Web Creator'];
   const period = 2000;
   const deltaRef = useRef(100);
   const tickRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const tick = () => {
-      const i = loopNum % professions.length;
-      const fullText = professions[i];
+      const i = loopNum % PROFESSIONS.length;
+      const fullText = PROFESSIONS[i];
 
       if (isDeleting) {
         setDisplayText(fullText.substring(0, displayText.length - 1));
@@ -28,7 +36,7 @@ const HeroSection = () => {
       if (!isDeleting && displayText === fullText) {
         deltaRef.current = period;
         setIsDeleting(true);
-      } else if (isDeleting && displayText === '') {
+      } else if (isDeleting && displayText === "") {
         setIsDeleting(false);
         setLoopNum(loopNum + 1);
         deltaRef.current = 500;
@@ -42,7 +50,7 @@ const HeroSection = () => {
     return () => {
       if (tickRef.current) clearTimeout(tickRef.current);
     };
-  }, [displayText, isDeleting, loopNum, professions]);
+  }, [displayText, isDeleting, loopNum]);
 
   const socialLinks = [
     {
@@ -79,7 +87,7 @@ const HeroSection = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: 'easeOut' as const },
+      transition: { duration: 0.6, ease: "easeOut" as const },
     },
   };
 
