@@ -1,6 +1,6 @@
-
-<div align="center">
 ![License](https://img.shields.io/badge/License-All%20Rights%20Reserved-red?style=for-the-badge)
+<div align="center">
+
 
 # 🚀 Eslam Adel | Frontend Developer
 
@@ -17,7 +17,7 @@ Passionate Frontend Developer focused on crafting responsive, accessible, and vi
 [![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-Visit_Portfolio-0ea5e9?style=for-the-badge)](https://eslam-adel25.vercel.app/)
 [![GitHub](https://img.shields.io/badge/GitHub-eslam--adel25-181717?style=for-the-badge&logo=github)](https://github.com/eslam-adel25)
 [![Portfolio](https://img.shields.io/badge/Portfolio-Production_Ready-7c3aed?style=for-the-badge)]
-[![Deployment](https://img.shields.io/badge/Deployment-Vercel-black?style=for-the-badge&logo=vercel)
+[![Deployment](https://img.shields.io/badge/Deployment-Vercel-black?style=for-the-badge&logo=vercel)]
 
 <br>
 

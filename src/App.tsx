@@ -4,7 +4,7 @@ import ParticlesBackground from './components/ParticlesBackground';
 import Navigation from './components/Navigation';
 import HeroSection from './sections/HeroSection';
 import AboutSection from './sections/AboutSection';
-import ServicesSection from './sections/ExpertiseSection';
+import ExpertiseSection from "./sections/ExpertiseSection";
 import PortfolioSection from './sections/PortfolioSection';
 import ContactSection from './sections/ContactSection';
 import Footer from './components/Footer';
@@ -90,9 +90,7 @@ function App() {
   return (
     <>
       <AnimatePresence mode="wait">
-        {isLoading && (
-          <LoadingScreen onComplete={() => setIsLoading(false)} />
-        )}
+        {isLoading && <LoadingScreen onComplete={() => setIsLoading(false)} />}
       </AnimatePresence>
 
       {!isLoading && (
@@ -111,7 +109,7 @@ function App() {
                 y: cursorPosition.y - 8,
                 scale: isHovering ? 2 : 1,
               }}
-              transition={{ type: 'spring', stiffness: 500, damping: 28 }}
+              transition={{ type: "spring", stiffness: 500, damping: 28 }}
             />
             <motion.div
               className="fixed w-8 h-8 rounded-full border border-[#00d4ff50] pointer-events-none z-[9998]"
@@ -120,7 +118,7 @@ function App() {
                 y: cursorPosition.y - 16,
                 scale: isHovering ? 1.5 : 1,
               }}
-              transition={{ type: 'spring', stiffness: 150, damping: 20 }}
+              transition={{ type: "spring", stiffness: 150, damping: 20 }}
             />
           </div>
 
@@ -134,7 +132,7 @@ function App() {
           <main>
             <HeroSection />
             <AboutSection />
-            <ServicesSection />
+            <ExpertiseSection />
             <PortfolioSection />
             <ContactSection />
           </main>
