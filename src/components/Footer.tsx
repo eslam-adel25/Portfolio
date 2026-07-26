@@ -1,30 +1,30 @@
-import { motion } from 'framer-motion';
-import { ArrowUp, Heart } from 'lucide-react';
+import { motion } from "framer-motion";
+import { ArrowUp, Heart } from "lucide-react";
 
 const Footer = () => {
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const currentYear = new Date().getFullYear();
 
   const footerLinks = [
     {
-      title: 'Quick Links',
+      title: "Quick Links",
       links: [
-        { label: 'Home', href: '#home' },
-        { label: 'About', href: '#about' },
-        { label: 'Services', href: '#services' },
-        { label: 'Portfolio', href: '#portfolio' },
+        { label: "Home", href: "#home" },
+        { label: "About", href: "#about" },
+        { label: "Expertise", href: "#expertise" },
+        { label: "Portfolio", href: "#portfolio" },
       ],
     },
     {
-      title: 'Services',
+      title: "Expertise",
       links: [
-        { label: 'Web Development', href: '#services' },
-        { label: 'UI/UX Design', href: '#services' },
-        { label: 'Digital Marketing', href: '#services' },
-        { label: 'Mobile Apps', href: '#services' },
+        { label: "Web Development", href: "#expertise" },
+        { label: "UI/UX Design", href: "#expertise" },
+        { label: "Digital Marketing", href: "#expertise" },
+        { label: "Mobile Apps", href: "#expertise" },
       ],
     },
   ];
@@ -40,7 +40,9 @@ const Footer = () => {
               href="#home"
               onClick={(e) => {
                 e.preventDefault();
-                document.getElementById('home')?.scrollIntoView({ behavior: 'smooth' });
+                document
+                  .getElementById("home")
+                  ?.scrollIntoView({ behavior: "smooth" });
               }}
               className="text-3xl font-bold gradient-text inline-block mb-4"
               whileHover={{ scale: 1.05 }}
@@ -48,11 +50,16 @@ const Footer = () => {
               Eslam<span className="text-white">.</span>
             </motion.a>
             <p className="text-[#a0a0b0] max-w-md mb-6 leading-relaxed">
-              A passionate Front-End Developer creating modern, responsive, and user-friendly 
-              web applications. Let's work together to bring your ideas to life.
+              A passionate Front-End Developer creating modern, responsive, and
+              user-friendly web applications. Let's work together to bring your
+              ideas to life.
             </p>
             <motion.button
-              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() =>
+                document
+                  .getElementById("contact")
+                  ?.scrollIntoView({ behavior: "smooth" })
+              }
               className="btn-luxury text-sm"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -72,7 +79,9 @@ const Footer = () => {
                       href={link.href}
                       onClick={(e) => {
                         e.preventDefault();
-                        document.querySelector(link.href)?.scrollIntoView({ behavior: 'smooth' });
+                        document
+                          .querySelector(link.href)
+                          ?.scrollIntoView({ behavior: "smooth" });
                       }}
                       className="text-[#a0a0b0] hover:text-[#00d4ff] transition-colors"
                     >
@@ -90,8 +99,8 @@ const Footer = () => {
       <div className="border-t border-[#ffffff08]">
         <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-[#a0a0b0] text-sm flex items-center gap-1">
-            © {currentYear} Eslam Adel. Made with 
-            <Heart size={14} className="text-red-500 fill-red-500" /> 
+            © {currentYear} Eslam Adel. Made with
+            <Heart size={14} className="text-red-500 fill-red-500" />
             in Egypt
           </p>
 
