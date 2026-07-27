@@ -29,9 +29,9 @@ interface ExpertiseCard {
 const expertiseData: ExpertiseCard[] = [
   {
     number: "01",
-    title: "Frontend Development",
+    title: "Frontend Engineering",
     description:
-      "Building responsive, interactive and scalable web applications using modern technologies.",
+      "Creating fast, accessible, and maintainable user interfaces with modern frontend technologies.",
     icon: Code2,
     color: "#00d4ff",
     glowRgb: "0, 212, 255",
@@ -65,7 +65,7 @@ const expertiseData: ExpertiseCard[] = [
     glowRgb: "6, 182, 212",
     skills: [
       { col1: "Mobile First", col2: "Flexbox / Grid" },
-      { col1: "Breakpoints", col2: "Media Queries" },
+      { col1: "Breakpoints", col2: "Accessibility" },
       { col1: "Cross Browser", col2: "PWA Support" },
     ],
   },
@@ -93,13 +93,13 @@ const expertiseData: ExpertiseCard[] = [
     glowRgb: "34, 197, 94",
     skills: [
       { col1: "RESTful APIs", col2: "Axios / Fetch" },
-      { col1: "GraphQL", col2: "WebSockets" },
+      { col1: "Authentication", col2: "WebSockets" },
       { col1: "Authentication", col2: "Real-time Data" },
     ],
   },
   {
     number: "06",
-    title: "Modern Web Technologies",
+    title: "Developer Tooling",
     description:
       "Working with the latest tools and technologies to deliver future-ready solutions.",
     icon: Layers,
@@ -109,6 +109,20 @@ const expertiseData: ExpertiseCard[] = [
       { col1: "Git & GitHub", col2: "CI / CD" },
       { col1: "Vite / Webpack", col2: "Docker Basics" },
       { col1: "ESLint / Prettier", col2: "GitHub Actions" },
+    ],
+  },
+  {
+    number: "07",
+    title: "Frontend Architecture",
+    description:
+      "Architecting modern frontend applications with reusable components, organized codebases, and scalable design patterns.",
+    icon: Puzzle,
+    color: "#22c55e",
+    glowRgb: "34, 197, 94",
+    skills: [
+      { col1: "Component Architecture", col2: "State Management" },
+      { col1: "Reusable Components", col2: "Folder Structure" },
+      { col1: "Code Organization", col2: "Performance Patterns" },
     ],
   },
 ];
@@ -686,8 +700,9 @@ export const ExpertiseSection: React.FC = () => {
 
           {/* Subtitle */}
           <p className="text-slate-400 text-sm sm:text-base md:text-lg max-w-2xl mx-auto font-normal leading-relaxed">
-            I build modern, high-performance web experiences with clean code and
-            attention to detail.
+            Delivering scalable, high-performance web applications with modern
+            frontend technologies, clean architecture, and exceptional user
+            experiences.
           </p>
         </motion.div>
 
@@ -816,7 +831,7 @@ export const ExpertiseSection: React.FC = () => {
         >
           {/* Sentence */}
           <p className="text-slate-300 text-base sm:text-lg md:text-xl font-medium mb-6 tracking-wide max-w-xl mx-auto">
-            Ready to build something amazing together?
+            Let's bring your ideas to life.
           </p>
 
           {/* Premium Pill CTA Button */}

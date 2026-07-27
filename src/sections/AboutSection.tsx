@@ -180,21 +180,20 @@ const AboutSection = () => {
               variants={itemVariants}
               className="text-[#a0a0b0] mb-6 leading-relaxed"
             >
-              I'm a passionate Front-End Developer with expertise in creating
-              modern, responsive, and user-friendly websites . I specialize in
-              transforming ideas into stunning digital experiences using
-              cutting-edge technologies like React, TypeScript, and Tailwind
-              CSS.
+              I'm a Front-End Developer focused on building modern, scalable,
+              and user-centered web applications. Using React, TypeScript, and
+              Tailwind CSS, I transform ideas into fast, responsive, and
+              maintainable digital products.
             </motion.p>
 
             <motion.p
               variants={itemVariants}
               className="text-[#a0a0b0] mb-8 leading-relaxed"
             >
-              My goal is to deliver exceptional user experiences through clean
-              code, intuitive design, and attention to detail. I believe in
-              continuous learning and staying updated with the latest web
-              development trends to provide the best solutions for my clients.
+              My approach is centered on writing clean, maintainable code and
+              building intuitive, accessible user interfaces. I continuously
+              improve my skills by staying up to date with modern web
+              technologies, best practices, and industry standards.
             </motion.p>
 
             {/* Skills */}
@@ -219,42 +218,7 @@ const AboutSection = () => {
                 </div>
               ))}
             </motion.div>
-            {/*
-            <motion.div variants={itemVariants} className="mb-8">
-              <h4 className="text-lg font-semibold mb-4">Technical Skills</h4>
-              <div className="space-y-4">
-                {skills.map((skill, index) => (
-                  <div key={index}>
-                    <div className="flex justify-between mb-1">
-                      <span className="text-sm text-[#a0a0b0]">
-                        {skill.name}
-                      </span>
-                      <span className="text-sm text-[#00d4ff]">
-                        {skill.level}
-                      </span>
-                    </div>
-                    <div className="h-2 bg-[#1a1a25] rounded-full overflow-hidden">
-                      <motion.div
-                        className="h-full bg-gradient-to-r from-[#00d4ff] to-[#7b2cbf] rounded-full"
-                        initial={{ width: 0 }}
-                        animate={isInView ? { width: `${skill.level}%` } : {}}
-                        transition={{ duration: 1, delay: 0.5 + index * 0.1 }}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </motion.div>*/}
-
-            {/* CTA Button */}
-            <motion.button
-              variants={itemVariants}
-              className="btn-luxury"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Read More
-            </motion.button>
+          
           </motion.div>
         </div>
 

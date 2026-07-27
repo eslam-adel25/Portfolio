@@ -135,9 +135,9 @@ const HeroSection = () => {
               variants={itemVariants}
               className="text-[#a0a0b0] text-lg max-w-lg mb-8 leading-relaxed"
             >
-              A passionate Front-End Developer dedicated to creating modern,
-              responsive, and user-friendly websites that deliver exceptional
-              digital experiences.
+              Front-End Developer specializing in React, TypeScript, and modern
+              UI engineering. Passionate about building scalable, performant,
+              and user-centered web applications.
             </motion.p>
 
             {/* Social Links */}

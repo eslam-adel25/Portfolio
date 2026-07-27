@@ -6,7 +6,7 @@ const Footer = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const currentYear = new Date().getFullYear();
+  //const currentYear = new Date().getFullYear();
 
   const footerLinks = [
     {
@@ -23,8 +23,8 @@ const Footer = () => {
       links: [
         { label: "Web Development", href: "#expertise" },
         { label: "UI/UX Design", href: "#expertise" },
-        { label: "Digital Marketing", href: "#expertise" },
-        { label: "Mobile Apps", href: "#expertise" },
+        { label: "API Integration", href: "#expertise" },
+        { label: "Performance Optimizations", href: "#expertise" },
       ],
     },
   ];
@@ -50,9 +50,8 @@ const Footer = () => {
               Eslam<span className="text-white">.</span>
             </motion.a>
             <p className="text-[#a0a0b0] max-w-md mb-6 leading-relaxed">
-              A passionate Front-End Developer creating modern, responsive, and
-              user-friendly web applications. Let's work together to bring your
-              ideas to life.
+              Building scalable frontend applications with modern technologies,
+              clean architecture, and exceptional user experiences.
             </p>
             <motion.button
               onClick={() =>
@@ -99,7 +98,7 @@ const Footer = () => {
       <div className="border-t border-[#ffffff08]">
         <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-[#a0a0b0] text-sm flex items-center gap-1">
-            © {currentYear} Eslam Adel. Made with
+            © 2023 Eslam Adel. Made with
             <Heart size={14} className="text-red-500 fill-red-500" />
             in Egypt
           </p>
