@@ -90,7 +90,7 @@ Message: ${formData.message}
     {
       icon: MapPin,
       label: 'Location',
-      value: 'Esyut, Egypt',
+      value: 'Assiut, Egypt',
       href: '#',
     },
   ];
