@@ -1,5 +1,5 @@
 import emailjs from "emailjs-com";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useGoogleLogin, googleLogout } from "@react-oauth/google";
 import { motion, useInView } from "framer-motion";
 import {
@@ -29,6 +29,8 @@ const ContactSection = () => {
   const [googleError, setGoogleError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isCooldown, setIsCooldown] = useState(false);
+  const [cooldownSeconds, setCooldownSeconds] = useState(60);
 
   const getWordCount = (text: string) => {
     const trimmedText = text.trim();
@@ -98,6 +100,11 @@ const ContactSection = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (isSubmitting || isCooldown) {
+      return;
+    }
+
     setIsSubmitting(true);
 
     if (!googleUser?.email) {
@@ -152,6 +159,8 @@ Message: ${formData.message}
       // UI بتاعك (زي ما هو 🔥)
       setIsSubmitting(false);
       setIsSubmitted(true);
+      setIsCooldown(true);
+      setCooldownSeconds(60);
       setFormData({ name: "", subject: "", message: "" });
 
       setTimeout(() => setIsSubmitted(false), 5000);
@@ -161,6 +170,26 @@ Message: ${formData.message}
       alert("في مشكلة في الإرسال ❌");
     }
   };
+
+  useEffect(() => {
+    if (!isCooldown) {
+      return;
+    }
+
+    const interval = setInterval(() => {
+      setCooldownSeconds((seconds) => {
+        if (seconds <= 1) {
+          setIsCooldown(false);
+          clearInterval(interval);
+          return 60;
+        }
+
+        return seconds - 1;
+      });
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [isCooldown]);
 
   const contactInfo = [
     {
@@ -439,6 +468,7 @@ Message: ${formData.message}
                     type="submit"
                     disabled={
                       isSubmitting ||
+                      isCooldown ||
                       !googleUser ||
                       !formData.name.trim() ||
                       !formData.subject.trim() ||
@@ -461,6 +491,11 @@ Message: ${formData.message}
                       </>
                     )}
                   </motion.button>
+                  {isCooldown && (
+                    <p className="text-sm text-[#a0a0b0] mt-3">
+                      You can send another message in {cooldownSeconds} seconds.
+                    </p>
+                  )}
                 </>
               )}
             </motion.form>
