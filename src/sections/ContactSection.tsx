@@ -30,6 +30,20 @@ const ContactSection = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+  const getWordCount = (text: string) => {
+    const trimmedText = text.trim();
+    if (!trimmedText) return 0;
+    return trimmedText.split(/\s+/).length;
+  };
+
+  const messageWordCount = getWordCount(formData.message);
+  const messageValidationError =
+    messageWordCount < 5
+      ? "Please enter at least 5 words."
+      : messageWordCount > 200
+        ? "Maximum message length is 200 words."
+        : "";
+
   const login = useGoogleLogin({
     onSuccess: async (tokenResponse) => {
       try {
@@ -89,6 +103,12 @@ const ContactSection = () => {
     if (!googleUser?.email) {
       setIsSubmitting(false);
       setGoogleError("Please sign in with Google before submitting.");
+      return;
+    }
+
+    const messageWordCount = getWordCount(formData.message);
+    if (messageWordCount < 5 || messageWordCount > 200) {
+      setIsSubmitting(false);
       return;
     }
 
@@ -397,6 +417,14 @@ Message: ${formData.message}
                       rows={5}
                       className="input-luxury resize-none"
                     />
+                    <p className="text-sm text-[#a0a0b0] mt-2">
+                      {messageWordCount} / 200 words
+                    </p>
+                    {messageValidationError && (
+                      <p className="text-sm text-red-400 mt-2">
+                        {messageValidationError}
+                      </p>
+                    )}
                   </div>
 
                   <motion.button
@@ -406,7 +434,8 @@ Message: ${formData.message}
                       !googleUser ||
                       !formData.name.trim() ||
                       !formData.subject.trim() ||
-                      !formData.message.trim()
+                      messageWordCount < 5 ||
+                      messageWordCount > 200
                     }
                     className="btn-luxury w-full flex items-center justify-center gap-2 disabled:opacity-70"
                     whileHover={{ scale: 1.02 }}
