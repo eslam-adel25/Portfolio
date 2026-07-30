@@ -106,7 +106,15 @@ const ContactSection = () => {
       return;
     }
 
+    const trimmedName = formData.name.trim();
+    const trimmedSubject = formData.subject.trim();
     const messageWordCount = getWordCount(formData.message);
+
+    if (!trimmedName || !trimmedSubject) {
+      setIsSubmitting(false);
+      return;
+    }
+
     if (messageWordCount < 5 || messageWordCount > 200) {
       setIsSubmitting(false);
       return;
