@@ -1,97 +1,157 @@
 import emailjs from "emailjs-com";
-import { useRef, useState } from 'react';
-import { motion, useInView } from 'framer-motion';
-import { 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Send, 
-  Linkedin, 
-  Github, 
+import { useRef, useState } from "react";
+import { useGoogleLogin, googleLogout } from "@react-oauth/google";
+import { motion, useInView } from "framer-motion";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Send,
+  Linkedin,
+  Github,
   Twitter,
   Instagram,
-  CheckCircle
-} from 'lucide-react';
+  CheckCircle,
+} from "lucide-react";
 
 const ContactSection = () => {
   const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, margin: '-100px' });
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
+    name: "",
+    subject: "",
+    message: "",
   });
+  const [googleUser, setGoogleUser] = useState<{
+    email: string;
+    name?: string;
+  } | null>(null);
+  const [googleError, setGoogleError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const login = useGoogleLogin({
+    onSuccess: async (tokenResponse) => {
+      try {
+        setGoogleError("");
+        const response = await fetch(
+          "https://www.googleapis.com/oauth2/v3/userinfo",
+          {
+            headers: {
+              Authorization: `Bearer ${tokenResponse.access_token}`,
+            },
+          },
+        );
+
+        if (!response.ok) {
+          throw new Error("Unable to verify Google account.");
+        }
+
+        const profile = await response.json();
+
+        if (!profile.email) {
+          throw new Error("Unable to verify Google email.");
+        }
+
+        setGoogleUser({ email: profile.email, name: profile.name });
+
+        if (!formData.name && profile.name) {
+          setFormData((prev) => ({ ...prev, name: profile.name }));
+        }
+      } catch (error) {
+        console.error(error);
+        setGoogleError("Google authentication failed. Please try again.");
+      }
+    },
+    onError: () => {
+      setGoogleError("Google authentication failed. Please try again.");
+    },
+    scope: "openid email profile",
+    flow: "implicit",
+  });
+
+  const handleSignOut = () => {
+    googleLogout();
+    setGoogleUser(null);
+    setGoogleError("");
+  };
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
-  setIsSubmitting(true);
+    e.preventDefault();
+    setIsSubmitting(true);
 
-  try {
-    // ✅ إرسال على الإيميل
-    await emailjs.send(
-      "service_kutggjp",
-      "template_ok0dp52",
-      {
-        name: formData.name,
-        email: formData.email,
-        subject: formData.subject,
-        message: formData.message,
-      },
-      "iIels6mC6zz5yd7A2"
-    );
+    if (!googleUser?.email) {
+      setIsSubmitting(false);
+      setGoogleError("Please sign in with Google before submitting.");
+      return;
+    }
 
-    // ✅ تجهيز رسالة واتساب
-    const text = `
+    const verifiedEmail = googleUser.email;
+
+    try {
+      // ✅ إرسال على الإيميل
+      await emailjs.send(
+        "service_kutggjp",
+        "template_ok0dp52",
+        {
+          name: formData.name,
+          email: verifiedEmail,
+          subject: formData.subject,
+          message: formData.message,
+        },
+        "iIels6mC6zz5yd7A2",
+      );
+
+      // ✅ تجهيز رسالة واتساب
+      const text = `
 Name: ${formData.name}
-Email: ${formData.email}
+Email: ${verifiedEmail}
 Subject: ${formData.subject}
 Message: ${formData.message}
     `;
 
-    const whatsappUrl = `https://wa.me/201093397961?text=${encodeURIComponent(text)}`;
+      const whatsappUrl = `https://wa.me/201093397961?text=${encodeURIComponent(text)}`;
 
-    // فتح واتساب
-    window.open(whatsappUrl, "_blank");
+      // فتح واتساب
+      window.open(whatsappUrl, "_blank");
 
-    // UI بتاعك (زي ما هو 🔥)
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    setFormData({ name: '', email: '', subject: '', message: '' });
+      // UI بتاعك (زي ما هو 🔥)
+      setIsSubmitting(false);
+      setIsSubmitted(true);
+      setFormData({ name: "", subject: "", message: "" });
 
-    setTimeout(() => setIsSubmitted(false), 5000);
-
-  } catch (error) {
-    console.log(error);
-    setIsSubmitting(false);
-    alert("في مشكلة في الإرسال ❌");
-  }
-};
+      setTimeout(() => setIsSubmitted(false), 5000);
+    } catch (error) {
+      console.log(error);
+      setIsSubmitting(false);
+      alert("في مشكلة في الإرسال ❌");
+    }
+  };
 
   const contactInfo = [
     {
       icon: Mail,
-      label: 'Email',
-      value: 'eslam.adel2596@gmail.com',
-      href: 'mailto:eslam.adel2596@gmail.com',
+      label: "Email",
+      value: "eslam.adel2596@gmail.com",
+      href: "mailto:eslam.adel2596@gmail.com",
     },
     {
       icon: Phone,
-      label: 'Phone',
-      value: '+20 1093397961',
-      href: 'tel:+201093397961',
+      label: "Phone",
+      value: "+20 1093397961",
+      href: "tel:+201093397961",
     },
     {
       icon: MapPin,
-      label: 'Location',
-      value: 'Assiut, Egypt',
-      href: '#',
+      label: "Location",
+      value: "Assiut, Egypt",
+      href: "#",
     },
   ];
 
@@ -123,14 +183,21 @@ Message: ${formData.message}
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: 'easeOut' as const },
+      transition: { duration: 0.6, ease: "easeOut" as const },
     },
   };
 
   return (
-    <section id="contact" className="py-24 relative bg-[#12121a]" ref={sectionRef}>
+    <section
+      id="contact"
+      className="py-24 relative bg-[#12121a]"
+      ref={sectionRef}
+    >
       {/* Background Orbs */}
-      <div className="orb orb-3" style={{ top: '30%', left: '80%', opacity: 0.15 }} />
+      <div
+        className="orb orb-3"
+        style={{ top: "30%", left: "80%", opacity: 0.15 }}
+      />
 
       <div className="max-w-7xl mx-auto px-6 relative">
         {/* Section Header */}
@@ -148,8 +215,8 @@ Message: ${formData.message}
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-[#00d4ff] to-[#7b2cbf] mx-auto rounded-full mb-6" />
           <p className="text-[#a0a0b0] max-w-2xl mx-auto">
-            Have a project in mind or want to collaborate? Feel free to reach out. 
-            I'm always open to discussing new opportunities.
+            Have a project in mind or want to collaborate? Feel free to reach
+            out. I'm always open to discussing new opportunities.
           </p>
         </motion.div>
 
@@ -158,14 +225,15 @@ Message: ${formData.message}
           <motion.div
             variants={containerVariants}
             initial="hidden"
-            animate={isInView ? 'visible' : 'hidden'}
+            animate={isInView ? "visible" : "hidden"}
             className="lg:col-span-2 space-y-8"
           >
             <motion.div variants={itemVariants}>
               <h3 className="text-2xl font-bold mb-6">Let's Talk</h3>
               <p className="text-[#a0a0b0] mb-8 leading-relaxed">
-                Whether you have a question, a project idea, or just want to say hello, 
-                I'd love to hear from you. Send me a message and I'll respond as soon as possible.
+                Whether you have a question, a project idea, or just want to say
+                hello, I'd love to hear from you. Send me a message and I'll
+                respond as soon as possible.
               </p>
             </motion.div>
 
@@ -215,7 +283,7 @@ Message: ${formData.message}
           <motion.div
             variants={containerVariants}
             initial="hidden"
-            animate={isInView ? 'visible' : 'hidden'}
+            animate={isInView ? "visible" : "hidden"}
             className="lg:col-span-3"
           >
             <motion.form
@@ -233,13 +301,17 @@ Message: ${formData.message}
                     <CheckCircle className="text-[#00d4ff]" size={40} />
                   </div>
                   <h3 className="text-2xl font-bold mb-2">Message Sent!</h3>
-                  <p className="text-[#a0a0b0]">Thank you for reaching out. I'll get back to you soon.</p>
+                  <p className="text-[#a0a0b0]">
+                    Thank you for reaching out. I'll get back to you soon.
+                  </p>
                 </motion.div>
               ) : (
                 <>
                   <div className="grid md:grid-cols-2 gap-6 mb-6">
                     <div>
-                      <label className="block text-sm font-medium mb-2">Your Name</label>
+                      <label className="block text-sm font-medium mb-2">
+                        Your Name
+                      </label>
                       <input
                         type="text"
                         name="name"
@@ -251,21 +323,56 @@ Message: ${formData.message}
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium mb-2">Your Email</label>
-                      <input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        placeholder="john@example.com"
-                        required
-                        className="input-luxury"
-                      />
+                      <label className="block text-sm font-medium mb-2">
+                        Your Email
+                      </label>
+                      <div className="rounded-xl bg-[#1a1a25] border border-[#ffffff05] p-4">
+                        {googleUser ? (
+                          <div className="space-y-3">
+                            <div className="flex items-center justify-between gap-3">
+                              <div className="flex items-center gap-2 text-[#00d4ff]">
+                                <CheckCircle size={18} />
+                                <span className="font-medium">
+                                  Verified Google Account
+                                </span>
+                              </div>
+                              <button
+                                type="button"
+                                onClick={handleSignOut}
+                                className="text-sm text-[#a0a0b0] hover:text-white transition"
+                              >
+                                Sign Out
+                              </button>
+                            </div>
+                            <p className="text-white break-all">
+                              {googleUser.email}
+                            </p>
+                          </div>
+                        ) : (
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setGoogleError("");
+                              login();
+                            }}
+                            className="btn-luxury w-full"
+                          >
+                            Continue with Google
+                          </button>
+                        )}
+                      </div>
+                      {googleError && (
+                        <p className="text-sm text-red-400 mt-2">
+                          {googleError}
+                        </p>
+                      )}
                     </div>
                   </div>
 
                   <div className="mb-6">
-                    <label className="block text-sm font-medium mb-2">Subject</label>
+                    <label className="block text-sm font-medium mb-2">
+                      Subject
+                    </label>
                     <input
                       type="text"
                       name="subject"
@@ -278,7 +385,9 @@ Message: ${formData.message}
                   </div>
 
                   <div className="mb-6">
-                    <label className="block text-sm font-medium mb-2">Message</label>
+                    <label className="block text-sm font-medium mb-2">
+                      Message
+                    </label>
                     <textarea
                       name="message"
                       value={formData.message}
@@ -292,7 +401,13 @@ Message: ${formData.message}
 
                   <motion.button
                     type="submit"
-                    disabled={isSubmitting}
+                    disabled={
+                      isSubmitting ||
+                      !googleUser ||
+                      !formData.name.trim() ||
+                      !formData.subject.trim() ||
+                      !formData.message.trim()
+                    }
                     className="btn-luxury w-full flex items-center justify-center gap-2 disabled:opacity-70"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
